@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Choice from './components/choice';
 import Question from './components/question';
 
