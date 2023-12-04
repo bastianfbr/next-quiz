@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface ChoiceProps {
   color: keyof typeof colorMap;
   content: string;
-  isCorrect: boolean;
+  isIncorrect: boolean;
   onClick: () => void;
 }
 
@@ -14,10 +14,12 @@ const colorMap = {
   magenta: 'btn btn-secondary',
 };
 
-const Choice: React.FC<ChoiceProps> = ({ color, content, isCorrect, onClick }) => {
+const Choice: React.FC<ChoiceProps> = ({ color, content, isIncorrect, onClick }) => {
   const [showDialog, setShowDialog] = useState(false);
 
   const handleButtonClick = () => {
+
+    console.log(`User selected answer is ${isIncorrect ? 'correct' : 'incorrect'}`)
     setShowDialog(true);
 
     setTimeout(() => {
@@ -28,7 +30,7 @@ const Choice: React.FC<ChoiceProps> = ({ color, content, isCorrect, onClick }) =
   };
 
   const buttonClassName = `btn btn-lg ${colorMap[color]}`;
-  const alertClassName = isCorrect ? 'alert alert-success' : 'alert alert-error';
+  const alertClassName = isIncorrect ? 'alert alert-error' : 'alert alert-success';
 
   return (
     <div className="join join-vertical mb-5">
@@ -39,7 +41,7 @@ const Choice: React.FC<ChoiceProps> = ({ color, content, isCorrect, onClick }) =
       {showDialog && (
         <div className="toast toast-center">
           <div className={alertClassName}>
-            <span>{isCorrect ? "C'est la bonne réponse !" : "Ce n'est pas la bonne réponse."}</span>
+            <span>{isIncorrect ? "Ce n'est pas la bonne réponse !" : "C'est la bonne réponse !"}</span>
           </div>
         </div>
       )}

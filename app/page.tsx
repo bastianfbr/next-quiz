@@ -16,13 +16,7 @@ const answers = [1, 2, 3, 4];
 export default function Home() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const handleAnswerClick = (selectedAnswer: number) => {
-    const isCorrect = selectedAnswer === answers[currentQuestionIndex];
-    console.log(`User selected answer ${selectedAnswer} for question ${currentQuestionIndex + 1}`);
-
-    // You can use the result of the check for further logic or storage
-    console.log(`User's answer is correct: ${isCorrect}`);
-
+  const handleAnswerClick = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
 
     if (currentQuestionIndex === questions.length - 1) {
@@ -33,10 +27,10 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-white">
       <Question question={questions[currentQuestionIndex]} />
-      <Choice color="magenta" content="Ceci est une réponse 1" isCorrect={answers[currentQuestionIndex] === 1} onClick={() => handleAnswerClick(1)} />
-      <Choice color="green" content="Peut-être la réponse 2" isCorrect={answers[currentQuestionIndex] === 2} onClick={() => handleAnswerClick(2)} />
-      <Choice color="orange" content="Ou alors la réponse 3" isCorrect={answers[currentQuestionIndex] === 3} onClick={() => handleAnswerClick(3)} />
-      <Choice color="blue" content="Finalement réponse 4 ?" isCorrect={answers[currentQuestionIndex] === 4} onClick={() => handleAnswerClick(4)} />
+      <Choice color="magenta" content="Ceci est une réponse 1" isIncorrect={answers[currentQuestionIndex] === 1} onClick={() => handleAnswerClick()} />
+      <Choice color="green" content="Peut-être la réponse 2" isIncorrect={answers[currentQuestionIndex] === 2} onClick={() => handleAnswerClick()} />
+      <Choice color="orange" content="Ou alors la réponse 3" isIncorrect={answers[currentQuestionIndex] === 3} onClick={() => handleAnswerClick()} />
+      <Choice color="blue" content="Finalement réponse 4 ?" isIncorrect={answers[currentQuestionIndex] === 4} onClick={() => handleAnswerClick()} />
     </main>
   );
 }
