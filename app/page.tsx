@@ -7,7 +7,7 @@ export default function Home() {
       <Question question="Quelle est la réponse à la vie, l'univers et le reste ?" />
       <Choice color="red" content="Ceci est une réponse 1" />
       <Choice color="green" content="Peut-être la réponse 2" />
-      <Choice color="yellow" content="Ou alors la réponse 3" />
+      <Choice color="orange" content="Ou alors la réponse 3" />
       <Choice color="blue" content="Finalement réponse 4 ?" />
     </main>
   );
